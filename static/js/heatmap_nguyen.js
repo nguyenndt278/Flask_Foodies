@@ -168,7 +168,7 @@ d3.csv("../static/data/df_all_NN.csv").then(function (response) {
   // myMap.attributionControl.setPrefix('');
 
   var myMap2 = L.map("map2", {
-    center: [40.71, 74.0],
+    center: [40.71, -74.0],
     zoom: 11
   });
 
