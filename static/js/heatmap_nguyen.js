@@ -165,11 +165,11 @@ d3.csv("../static/data/df_all_NN.csv").then(function (response) {
     zoom: 11
   });
 
-  myMap.attributionControl.setPrefix('');
+  // myMap.attributionControl.setPrefix('');
 
   var myMap2 = L.map("map2", {
-    center: [29.8,-95.40]
-    // zoom: 6
+    center: [40.71, 74.0],
+    zoom: 11
   });
 
 
@@ -201,8 +201,8 @@ d3.csv("../static/data/df_all_NN.csv").then(function (response) {
     collapsed: false
   }).addTo(myMap2);
 
-  myMap.sync(myMap2, {offsetFn: L.Sync.offsetHelper([0, 0.4], [-57.0, 24.5])});
-  myMap2.sync(myMap, {offsetFn: L.Sync.offsetHelper([-57.0, 24.5], [0, 0.4])});
+  // myMap.sync(myMap2, {offsetFn: L.Sync.offsetHelper([0, 0.4], [-57.0, 24.5])});
+  // myMap2.sync(myMap, {offsetFn: L.Sync.offsetHelper([-57.0, 24.5], [0, 0.4])});
 
   // New library
   var options = {
