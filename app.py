@@ -11,25 +11,28 @@ from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
 
-app.config["SQLALCHEMY_DATABASE_URI"] = "postgres://yieqasktdngdap:ae5d27f49b650964142cb6b09e3bddc7f4e71334cbc83a7a052bf0b681a5df8d@ec2-54-225-173-42.compute-1.amazonaws.com:5432/d5fup55cdi35ms"
+# app.config["SQLALCHEMY_DATABASE_URI"] = "postgres://yieqasktdngdap:ae5d27f49b650964142cb6b09e3bddc7f4e71334cbc83a7a052bf0b681a5df8d@ec2-54-225-173-42.compute-1.amazonaws.com:5432/d5fup55cdi35ms"
 
-db = SQLAlchemy(app)
+# db = SQLAlchemy(app)
 
-metadata = MetaData()
-metadata.reflect(db.engine)#, only=['Yelp', 'Zomato'])
+# metadata = MetaData()
+# metadata.reflect(db.engine)#, only=['Yelp', 'Zomato'])
 
-Base = automap_base(metadata=metadata)
-Base.prepare()
-# print('keys', Base.classes.keys())
-yelp = Base.classes.Yelp
-zomato= Base.classes.Zomato
+# Base = automap_base(metadata=metadata)
+# Base.prepare()
+# # print('keys', Base.classes.keys())
+# df_all_nn = Base.classes.df
+# zomato= Base.classes.Zomato
 
-yelp = Base.classes.Yelp
-zomato= Base.classes.Zomato
-
+# yelp = Base.classes.Yelp
+# zomato= Base.classes.Zomato
 @app.route("/")
 def index():
     return render_template("index.html")
+
+# @app.route("/jsonified")
+# def jsonified():
+#     return jsonify(df_all_nn)
 
 if __name__ == "__main__":
     app.run()
