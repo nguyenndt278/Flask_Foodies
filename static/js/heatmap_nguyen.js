@@ -14,22 +14,24 @@ var streetmap2 = L.tileLayer("https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.p
   accessToken: API_KEY
 });
 
-var lightmap= L.tileLayer("https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}", {
+var lightmap = L.tileLayer("https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}", {
   attribution: "Map data &copy; <a href='https://www.openstreetmap.org/'>OpenStreetMap</a> contributors, <a href='https://creativecommons.org/licenses/by-sa/2.0/'>CC-BY-SA</a>, Imagery © <a href='https://www.mapbox.com/'>Mapbox</a>, Made by Nguyen Nguyen",
   maxZoom: 18,
   id: "mapbox.light",
   accessToken: API_KEY
 });
 
-var lightmap2= L.tileLayer("https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}", {
+var lightmap2 = L.tileLayer("https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}", {
   attribution: "Map data &copy; <a href='https://www.openstreetmap.org/'>OpenStreetMap</a> contributors, <a href='https://creativecommons.org/licenses/by-sa/2.0/'>CC-BY-SA</a>, Imagery © <a href='https://www.mapbox.com/'>Mapbox</a>, Made by Nguyen Nguyen",
   maxZoom: 18,
   id: "mapbox.light",
   accessToken: API_KEY
 });
 
-d3.csv("../static/data/df_all_NN.csv").then(function (response) {
 
+// d3.csv("../static/data/df_all_NN.csv").then(function (response) {
+
+d3.json('/jsonified').then(function (response) {
   response.forEach(function (data) {
     data.Rating = +data.Rating;
     data.Votes = +data.Votes;
@@ -161,7 +163,7 @@ d3.csv("../static/data/df_all_NN.csv").then(function (response) {
   };
 
   var myMap = L.map("map1", {
-    center: [29.8,-95.40],
+    center: [29.8, -95.40],
     zoom: 11
   });
 
@@ -217,10 +219,10 @@ d3.csv("../static/data/df_all_NN.csv").then(function (response) {
   var control_zoom2 = L.control.zoomBox(options);
   myMap2.addControl(control_zoom2);
 
-  
-var a1= L.control.sideBySide(streetmap.addTo(myMap), lightmap.addTo(myMap)).addTo(myMap);
 
-var a2= L.control.sideBySide(streetmap2.addTo(myMap2), lightmap2.addTo(myMap2)).addTo(myMap2);
+  var a1 = L.control.sideBySide(streetmap.addTo(myMap), lightmap.addTo(myMap)).addTo(myMap);
+
+  var a2 = L.control.sideBySide(streetmap2.addTo(myMap2), lightmap2.addTo(myMap2)).addTo(myMap2);
 
 }
 );
